@@ -163,7 +163,7 @@ Here is my scenario now:
     # We define the standard PrestaShop localisation tree: zone > country > state > address
     And there is a zone named "North America"
     And there is a country named "country1" and iso code "US" in zone "North America"
-    And there is a state named "state1" with iso code "TEST-1" in country"country1" and zone "North America"
+    And there is a state named "state1" with iso code "TEST-1" in country "country1" and zone "North America"
     And there is an address named "address1" with postcode "1" in state "state1"
     # We need a carrier with shipping fees
     Given there is a carrier named "carrier1"
