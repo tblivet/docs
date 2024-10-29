@@ -113,3 +113,15 @@ Don't forget to edit this configuration to make it works.
     CustomLog /var/log/apache2/prestashop.access.log combined
 </VirtualHost>
 ```
+
+If PHP-FPM is on another container than APACHE and both containers share a single volume that contains
+the application code but with different mount path, then the use and adapt the following lines (in this
+example /var/www/html is the mount path in the PHP-FPM container)
+
+```
+    <FilesMatch .php$>
+        ProxyFCGISetEnvIf "true" SCRIPT_FILENAME "/var/www/html%{reqenv:SCRIPT_NAME}"
+        SetHandler "proxy:fcgi://myapp-php-fpm:9000"
+    </FilesMatch>
+```
+
