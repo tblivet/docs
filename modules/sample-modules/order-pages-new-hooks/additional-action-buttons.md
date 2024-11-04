@@ -23,28 +23,28 @@ Let's add hook related code to main module class `demovieworderhooks`:
         /** @var \Symfony\Bundle\FrameworkBundle\Routing\Router $router */
         $router = $this->get('router');
 
-        /** @var \PrestaShopBundle\Controller\Admin\Sell\Order\ActionsBarButtonsCollection $bar */
+        /** @var \PrestaShop\PrestaShop\Core\Action\ActionsBarButtonsCollection $bar */
         $bar = $params['actions_bar_buttons_collection'];
 
         $viewCustomerUrl = $router->generate('admin_customers_view', ['customerId'=> (int)$order->id_customer]);
         $bar->add(
-            new \PrestaShopBundle\Controller\Admin\Sell\Order\ActionsBarButton(
+            new \PrestaShop\PrestaShop\Core\Action\ActionsBarButton(
                 'btn-secondary', ['href' => $viewCustomerUrl], 'View customer'
             )
         );
         $bar->add(
-            new \PrestaShopBundle\Controller\Admin\Sell\Order\ActionsBarButton(
+            new \PrestaShop\PrestaShop\Core\Action\ActionsBarButton(
                 'btn-info', ['href' => 'https://www.prestashop-project.org/'], 'Go to prestashop'
             )
         );
         $bar->add(
-            new \PrestaShopBundle\Controller\Admin\Sell\Order\ActionsBarButton(
+            new \PrestaShop\PrestaShop\Core\Action\ActionsBarButton(
                 'btn-dark', ['href' => 'https://github.com/PrestaShop/example-modules/tree/master/demovieworderhooks'], 'Go to GitHub'
             )
         );
         $createAnOrderUrl = $router->generate('admin_orders_create');
         $bar->add(
-            new \PrestaShopBundle\Controller\Admin\Sell\Order\ActionsBarButton(
+            new \PrestaShop\PrestaShop\Core\Action\ActionsBarButton(
                 'btn-link', ['href' => $createAnOrderUrl], 'Create an order'
             )
         );
@@ -52,10 +52,10 @@ Let's add hook related code to main module class `demovieworderhooks`:
 ```
 
 {{% notice note %}}
-We used full path here `\PrestaShopBundle\Controller\Admin\Sell\Order\ActionsBarButton`
+We used full path here `\PrestaShop\PrestaShop\Core\Action\ActionsBarButton`
 but a slightly better approach could be with `use` statement followed by imported class namespace
 above the class declaration:
-`use PrestaShopBundle\Controller\Admin\Sell\Order\ActionsBarButton;`
+`use PrestaShop\PrestaShop\Core\Action\ActionsBarButton;`
 {{% /notice %}}
 
 With `$router = $this->get('router');` we inject the router capable to generate url links
