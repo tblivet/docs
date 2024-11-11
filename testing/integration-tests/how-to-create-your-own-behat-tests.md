@@ -238,7 +238,7 @@ After I have implemented it, this is what my step looks like:
         $carrier = $this->carriers[$carrierName];
 
         // disable handling cost
-        $carrier->shipping_handling = false:
+        $carrier->shipping_handling = false;
         $carrier->save();
     }
 ```
