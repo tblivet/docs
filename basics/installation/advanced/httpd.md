@@ -114,9 +114,7 @@ Don't forget to edit this configuration to make it works.
 </VirtualHost>
 ```
 
-If PHP-FPM is on another container than APACHE and both containers share a single volume that contains
-the application code but with different mount path, then the use and adapt the following lines (in this
-example /var/www/html is the mount path in the PHP-FPM container)
+If PHP-FPM is running in a separate container from Apache, and both containers share a single volume that contains the application code but with different mount paths, you should use and adapt the code snippet below. In the example below, the mount path in the PHP-FPM container is /var/www/html.
 
 ```
     <FilesMatch .php$>
