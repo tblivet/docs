@@ -5,6 +5,10 @@ weight: 30
 
 # How to add a new Core Hook
 
+{{% notice warning %}}
+This page describes how to add a new Core hook for the selected Core version. If you wish to add a new Core hook for another PrestaShop version, make sure to select the right version.
+{{% /notice %}}
+
 Although hooks are automatically created the first time they are subscribed to, new hooks added to the Core itself need to be properly registered and documented.
 
 Here are the steps you need to follow.
@@ -45,6 +49,24 @@ Each hook has a name, a title and a definition. They are identified by an additi
 
 Add new hooks at the bottom of the list, as hooks are registered sequentially.
 
+Here is an example of [Pull Request][example-pr-add-hook-xml] registering a new hook.
+
+### How to choose a name for this new hook
+
+The hook naming convention is `type` followed by `location` or `target`. `Type` can be `display` or `action` .
+
+The name of the hook must be useful. It should either help a developer understand where this hook is dispatched or what the hook aims to do. Depending on the usecase you should choose the 1st or 2nd option.
+
+Here are some examples:
+- `displayMaintenance`: this hook name was chosen to indicate where it is displayed (on maintenance page)
+- `actionUpdateQuantity`: this hook name was chosen to indicate when it is dispatched
+- `actionCustomerGridDataModifier`: this hook was chosen to indicate what it should be used for
+- `displayAdminGridTableBefore`: this hook name was chosen to indicate where it is displayed
+
+{{% notice tip %}}
+Remember that hook names are global – choose your hook names carefully to reduce risks of collision with other modules or future Core hooks.
+{{% /notice %}}
+
 ## 3. Prepare database update for shop upgrades
 
 The previous step only adds the hook to _new_ shops. We also need to register the hook to shops that upgrade from a previous version.
@@ -62,3 +84,9 @@ INSERT IGNORE INTO `PREFIX_hook` (`name`, `title`, `description`) VALUES
   ('displayAdministrationPageForm', 'Manage Administration Page form fields', 'This hook adds, update or remove fields of the Administration Page form'),
   ('actionMaintenancePageFormSave', 'Processing Maintenance page form', 'This hook is called when the Maintenance Page form is processed');
 ```
+
+If you wish to test your changes, follow [this page][autoupgrade-install] to install the autoupgrade module.
+
+[example-pr-add-hook-xml]: https://github.com/PrestaShop/PrestaShop/pull/34431/files#diff-83f4085b0cf6d3684a214fdffee7ec16b2f967d60a2674a7d4a536a2898eee26
+[autoupgrade-install]: {{< ref "/8/basics/keeping-up-to-date/use-autoupgrade-module.md" >}}
+
