@@ -85,8 +85,9 @@ INSERT IGNORE INTO `PREFIX_hook` (`name`, `title`, `description`) VALUES
   ('actionMaintenancePageFormSave', 'Processing Maintenance page form', 'This hook is called when the Maintenance Page form is processed');
 ```
 
+You can also use a [helper](https://github.com/PrestaShop/autoupgrade/pull/577/files) available to add a new hook during the upgrade process for a given version.
+
 If you wish to test your changes, follow [this page][autoupgrade-install] to install the autoupgrade module.
 
 [example-pr-add-hook-xml]: https://github.com/PrestaShop/PrestaShop/pull/34431/files#diff-83f4085b0cf6d3684a214fdffee7ec16b2f967d60a2674a7d4a536a2898eee26
 [autoupgrade-install]: {{< ref "/8/basics/keeping-up-to-date/use-autoupgrade-module.md" >}}
-
