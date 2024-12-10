@@ -13,6 +13,10 @@ Although hooks are automatically created the first time they are subscribed to, 
 
 Here are the steps you need to follow.
 
+{{% notice note %}}
+If you wish to share your new hook with us, but are not sure how to proceed, you can read the [Contribute: Adding a new Core hook]({{< relref "../../../contribute/contribute-pull-requests/add_hook" >}}) guide.
+{{% /notice %}}
+
 ## 1. Dispatch the new hook
 
 The very first step is just to dispatch the new hook wherever you need it, as explained in [Dispatching a Hook]({{< relref "dispatching-hook" >}}).
