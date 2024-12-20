@@ -56,6 +56,7 @@ Following the same rules as the core requires the configuration file to be avail
 ```bash
 # Install dependencies
 composer require --dev prestashop/php-dev-tools
+composer require --dev friendsofphp/php-cs-fixer
 
 # Set up configuration files
 php vendor/bin/prestashop-coding-standards cs-fixer:init
@@ -63,7 +64,7 @@ php vendor/bin/prestashop-coding-standards cs-fixer:init
 
 These commands install and prepare your project for php-cs-fixer and the core standards. The commands have run successfully if a file `.php_cs.dist` exists in the root folder.
 
-[PHP-CS-Fixer](https://packagist.org/packages/friendsofphp/php-cs-fixer) is used to check the code style, and is automatically included in your project if you required `prestashop/php-dev-tools` by following the commands above.
+[PHP-CS-Fixer](https://packagist.org/packages/friendsofphp/php-cs-fixer) is used to check the code style. It is suggested by `prestashop/php-dev-tools` on [Packagist](https://packagist.org/packages/prestashop/php-dev-tools), and must be required via composer separately.
 
 It provides two main features:
 
@@ -95,7 +96,7 @@ When the extension is open-source, sharing the license is one important task.
 In these headers, details can be found about the author, the license, the original year of publication.
 One command will apply the license header to all your files, or update it as necessary.
 
-This tool is part of `prestashop/php-dev-tools` available on [Packagist](https://packagist.org/packages/prestashop/php-dev-tools), which can be required via composer.
+This tool is suggested by `prestashop/php-dev-tools` on [Packagist](https://packagist.org/packages/prestashop/php-dev-tools), and must be required via composer separately.
 
 ### Example
 
@@ -108,6 +109,7 @@ To install and use the tool:
 ```bash
 # Install header-stamp
 composer require --dev prestashop/php-dev-tools
+composer require --dev prestashop/header-stamp
 
 # Apply header block
 php vendor/bin/header-stamp --license=vendor/prestashop/header-stamp/assets/afl.txt --exclude=vendor,tests,_dev
