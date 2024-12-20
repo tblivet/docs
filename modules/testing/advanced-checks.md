@@ -135,7 +135,7 @@ The main tools used for unit testing is [PHPUnit](https://phpunit.de/).
 Like other PHP testing tools, it can be installed in your project with composer. Take care to install it in your **development dependencies** to avoid distributing in your production releases.
 
 ```bash
-composer require --dev phpunit/phpunit:5.7
+composer require --dev phpunit/phpunit
 ```
 
 While newer versions of PHPUnit exist, the version chosen in your project must match the PHP compatibility range of the project, otherwise composer will refuse to install it. The version provided in the example above is the last one compatible with PHP 5.6.
