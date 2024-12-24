@@ -102,7 +102,7 @@ Simply download the archive for the latest version of Git (2.23 as of this writi
 * OS X: https://git-scm.com/download/mac
 
   * User interfaces are available, for instance https://git-fork.com/ or https://www.gitkraken.com/
-* Linux: type `apt-get install git` (or your distribution's equivalent).
+* Linux: type `apt install git` (or your distribution's equivalent).
 
 You can then open your command line and type `git --version` to check that Git is indeed installed. It should display the version number. You're good to go!
 
