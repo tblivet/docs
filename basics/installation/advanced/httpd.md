@@ -94,7 +94,7 @@ Don't forget to edit this configuration to make it works.
     # with mod_rewrite or mod_autoindex
     <FilesMatch \.php$>
         # SetHandler proxy:fcgi://127.0.0.1:9000
-        SetHandler proxy:unix:/var/run/php/php8.3-fpm.sock|fcgi://dummy
+        SetHandler proxy:unix:/var/run/php/php8.1-fpm.sock|fcgi://dummy
     </FilesMatch>
 
     DocumentRoot /path/to/prestashop
