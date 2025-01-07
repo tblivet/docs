@@ -21,12 +21,12 @@ It may be incomplete, and remember you must adapt it for your own server's needs
 <VirtualHost *:80> # or 443 for SSL support
 
     ServerName example.com
-    DocumentRoot /path/to/prestashop
 
     # SSLEngine on
     # SSLCertificateFile /etc/apache2/ssl/example.crt
     # SSLCertificateKeyFile /etc/apache2/ssl/example.key
 
+    DocumentRoot /path/to/prestashop
     <Directory /path/to/prestashop>
         # enable the .htaccess rewrites
         AllowOverride All
@@ -79,7 +79,6 @@ Don't forget to edit this configuration to make it works.
 <VirtualHost *:80> # or 443 for SSL support
 
     ServerName example.com
-    DocumentRoot /path/to/prestashop
 
     # SSLEngine on
     # SSLCertificateFile /etc/apache2/ssl/example.crt
@@ -95,7 +94,7 @@ Don't forget to edit this configuration to make it works.
     # with mod_rewrite or mod_autoindex
     <FilesMatch \.php$>
         # SetHandler proxy:fcgi://127.0.0.1:9000
-        SetHandler proxy:unix:/var/run/php/php7.2-fpm.sock|fcgi://dummy
+        SetHandler proxy:unix:/var/run/php/php8.1-fpm.sock|fcgi://dummy
     </FilesMatch>
 
     DocumentRoot /path/to/prestashop
