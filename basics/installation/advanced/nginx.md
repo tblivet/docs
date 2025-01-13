@@ -103,7 +103,7 @@ server {
 
 
     # .htaccess, .DS_Store, .htpasswd, etc.
-    location ~ /\. {
+    location ~ /\.(?!well-known) {
         deny all;
     }
 
