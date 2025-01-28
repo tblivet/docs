@@ -150,6 +150,21 @@ To do it: you declare your new service using the old service name. So if you wan
 
 That's done. The service registered under the name `prestashop.core.b2b.b2b_feature` is now your service. The previous `prestashop.core.b2b.b2b_feature` is gone.
 
+Since {{< minver v=8.1 >}}, some services definitions have been updated to rely on FQCN. Nothing changes, just name your service after the original FQCN :
+
+Example : 
+If you want override this following service 
+```yml
+PrestaShop\PrestaShop\Adapter\ImageManager:
+arguments: [ '@PrestaShop\PrestaShop\Adapter\LegacyContext' ]
+```
+You write in config/services.yml :
+```yml
+PrestaShop\PrestaShop\Adapter\ImageManager:
+  class:  YourCompany\YourModule\YourService
+  arguments: [ '@prestashop.adapter.legacy.context' ]
+```
+
 #### Decorate the service
 
 When you choose to decorate a service, this means that you _make everybody use your service but you keep the old service available_. The previous service has been given a new name and can still be used. Every other part of the code where this service was used will use the new version.
