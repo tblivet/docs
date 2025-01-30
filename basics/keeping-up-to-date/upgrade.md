@@ -24,9 +24,23 @@ Learn [how to backup your shop]({{< ref "/1.7/basics/keeping-up-to-date/backup" 
 This chapter describes several ways to complete an upgrade of
 PrestaShop.
 
+## Upgrade assistant module (formerly 1-click upgrade module)
+
+You can use provided `autoupgrade` module to upgrade your store to the newest version using web interface. You can read more about the module and how to use it [here]({{< ref "/1.7/basics/keeping-up-to-date/use-autoupgrade-module" >}}).
+
+## Upgrade assistant module (formerly 1-click upgrade module) - CLI method
+
+Upgrade assistant module (autoupgrade) is fully accessible through `cli`. You can read all the details [here]({{< ref "/1.7/basics/keeping-up-to-date/upgrade-module/upgrade-cli" >}}).
+
 ## Manual upgrade – Process details
 
 This guide gives you the full control on the process. This one has been applied by PrestaShop for several major versions, and thus can be applied on very old shops.
+
+{{% notice info %}}
+Warning, the manual method described below only works for updates from a PrestaShop 1.7.0 store to a PrestaShop 1.7.8 one.
+Wrong use of this method may render the update and the operation of your store impossible. 
+We recommend that you use the web interface or CLI of the Autoupgrade module.
+{{% /notice %}}
 
 ### Release download
 
