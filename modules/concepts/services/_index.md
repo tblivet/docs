@@ -150,15 +150,15 @@ To do it: you declare your new service using the old service name. So if you wan
 
 That's done. The service registered under the name `prestashop.core.b2b.b2b_feature` is now your service. The previous `prestashop.core.b2b.b2b_feature` is gone.
 
-Since {{< minver v=8.1 >}}, some services definitions have been updated to rely on FQCN. Nothing changes, just name your service after the original FQCN :
+Since {{< minver v=8.1 >}}, some service definitions have been updated to rely on FQCN. Nothing changes, just name your service after the original FQCN:
 
 Example : 
 If you want override this following service 
 ```yml
 PrestaShop\PrestaShop\Adapter\ImageManager:
-arguments: [ '@PrestaShop\PrestaShop\Adapter\LegacyContext' ]
+    arguments: [ '@PrestaShop\PrestaShop\Adapter\LegacyContext' ]
 ```
-You write in config/services.yml :
+you can do this in your `config/services.yml`:
 ```yml
 PrestaShop\PrestaShop\Adapter\ImageManager:
   class:  YourCompany\YourModule\YourService
