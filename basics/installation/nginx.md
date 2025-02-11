@@ -127,8 +127,8 @@ server {
         fastcgi_index index.php;
 
         fastcgi_keep_conn on;
-        fastcgi_read_timeout 30s;
-        fastcgi_send_timeout 30s;
+        fastcgi_read_timeout 60s;
+        fastcgi_send_timeout 60s;
 
         # Uncomment these in case of long loading or 502/504 errors.
         # fastcgi_buffer_size 256k;
