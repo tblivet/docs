@@ -113,14 +113,12 @@ $newColumn = new DataColumn('example') ...
 $columns->addAfter('name', $newColumn);
 ```
 
-The operation is **more difficult** with an existing column. We need to remove and add it again to the right position:
+With an existing column you can use the:
+* `move($columnId, $position)` with the postion being an `int` 
 
 ```php
 <?php
-$columns->remove('the_column_we_need_to_move');
-
-$columnWeNeedToMove = new ... // we create the column
-$columns->addBefore('sales', $columnWeNeedToMove);
+$columns->move('name', 2);
 ```
 
 ### Re-ordering filters?
@@ -178,3 +176,72 @@ The result column name (here `nb_orders`) must be the same of the `field` option
 {{% /notice %}}
 
 Once the new hook is registered and the module activated, you should see the "Customers" grid customized according to the use cases we have listed in the introduction: great!
+
+## Full Example
+
+In this example, we are adding the APE number to the customer grid and the filter for it.
+
+```php
+<?php
+use PrestaShop\PrestaShop\Core\Grid\Definition\GridDefinitionInterface;
+use PrestaShop\PrestaShop\Core\Grid\Definition\Factory\CustomerGridDefinitionFactory;
+use PrestaShop\PrestaShop\Core\Grid\Column\Type\DataColumn;
+use PrestaShop\PrestaShop\Core\Grid\Filter\Filter;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
+    public function hookActionCustomerGridDefinitionModifier(array $params)
+    {
+        $definition = $params['definition'];
+
+        // Add the column
+        $columns = $definition->getColumns();
+        $columns->addAfter('id_customer', 
+            (new DataColumn('ape'))
+            ->setName('Account #')
+            ->setOptions([
+                'field' => 'ape'
+            ])
+        );
+
+        # Add the filter
+        $filters = $definition->getFilters();
+        $filters->add(
+            (new Filter('ape', TextType::class))
+            ->setTypeOptions([
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'APE #',
+                ],
+            ])
+            ->setAssociatedColumn('ape')
+        );
+    }
+
+    public function hookActionCustomerGridQueryBuilderModifier(array $params)
+    {
+        // Add ape to the search
+        $searchQueryBuilder = $params['search_query_builder'];
+        $searchQueryBuilder->addSelect('c.ape as ape');
+        $searchCriteria = $params['search_criteria'];
+
+        # Adding the filter to the query
+        foreach ($searchCriteria->getFilters() as $filterName => $filterValue) {
+            if ('ape' === $filterName) {
+                $searchQueryBuilder->andWhere('c.ape = :ape');
+                $searchQueryBuilder->setParameter('ape', $filterValue);
+            }
+        }
+    }
+```
+{{% notice note %}}
+Don't forget to register these hooks in your module
+{{% /notice %}}
+
+```php
+<?php
+public function install() {
+    return parent::install() &&
+        $this->registerHook('actionCustomerGridDefinitionModifier') &&
+        $this->registerHook('actionCustomerGridQueryBuilderModifier');
+}
+```
