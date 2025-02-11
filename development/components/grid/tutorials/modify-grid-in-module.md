@@ -179,7 +179,7 @@ Once the new hook is registered and the module activated, you should see the "Cu
 
 ## Full Example
 
-In tihs example we are adding the APE number to the customer grid and the filter for it.
+In this example, we are adding the APE number to the customer grid and the filter for it.
 
 ```php
 <?php
@@ -189,7 +189,7 @@ use PrestaShop\PrestaShop\Core\Grid\Column\Type\DataColumn;
 use PrestaShop\PrestaShop\Core\Grid\Filter\Filter;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-public function hookActionCustomerGridDefinitionModifier(array $params)
+    public function hookActionCustomerGridDefinitionModifier(array $params)
     {
         $definition = $params['definition'];
 
